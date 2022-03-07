@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
 	Vector3[] path;
 	int targetIndex;
 
-	void Start()
+	void Update()
 	{
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
 	}
@@ -38,6 +38,8 @@ public class Unit : MonoBehaviour
 				targetIndex++;
 				if (targetIndex >= path.Length)
 				{
+					targetIndex = 0;
+					path = new Vector3[0];
 					yield break;
 				}
 				currentWaypoint = path[targetIndex];
