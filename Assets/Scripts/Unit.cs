@@ -12,7 +12,10 @@ public class Unit : MonoBehaviour
 	Vector3[] path;
 	int targetIndex;
 
-	void LateUpdate()
+	public float turnSmoothTime = .1f;
+	float turnSmoothVelocity;
+
+	void Update()
 	{
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
 	}
@@ -32,6 +35,13 @@ public class Unit : MonoBehaviour
 	{
 		Vector3 currentWaypoint = path[0];
 
+		Vector3 direction = new Vector3(target.position.x, target.position.y, target.position.z);
+
+		float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+		float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+		transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
 		while (true)
 		{
 			if (transform.position == currentWaypoint)
@@ -47,7 +57,10 @@ public class Unit : MonoBehaviour
 			}
 			else
             {
+				
+
 				transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+				
 			}
 			yield return null;
 
