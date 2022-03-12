@@ -17,7 +17,11 @@ public class Unit : MonoBehaviour
 
 	void Update()
 	{
+		
+		
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+
+		
 	}
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -40,7 +44,7 @@ public class Unit : MonoBehaviour
 		float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 		float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
-		transform.rotation = Quaternion.Euler(0f, angle, 0f);
+		transform.LookAt(target.position, Vector3.up);
 
 		while (true)
 		{
@@ -57,10 +61,7 @@ public class Unit : MonoBehaviour
 			}
 			else
             {
-				
-
 				transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-				
 			}
 			yield return null;
 
