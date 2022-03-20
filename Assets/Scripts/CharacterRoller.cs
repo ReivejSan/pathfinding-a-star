@@ -9,7 +9,7 @@ public class CharacterRoller : MonoBehaviour
     private float verticalInput;
 
     [SerializeField]
-    private float speed = 10f;
+    private float speed = 1f;
     
     // Start is called before the first frame update
     void Start()
