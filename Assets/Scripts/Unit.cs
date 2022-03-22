@@ -7,21 +7,18 @@ public class Unit : MonoBehaviour
 {
 	public Transform target;
 	
-	[SerializeField]
-	float speed = 20;
+	public float speed = 20;
 	Vector3[] path;
 	int targetIndex;
 
 	public float turnSmoothTime = .1f;
 	float turnSmoothVelocity;
 
+	public bool isMoving;
+
 	void Update()
 	{
-		
-		
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
-
-		
 	}
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -32,6 +29,7 @@ public class Unit : MonoBehaviour
 			targetIndex = 0;
 			StopCoroutine("FollowPath");
 			StartCoroutine("FollowPath");
+			isMoving = true;
 		}
 	}
 
@@ -62,9 +60,8 @@ public class Unit : MonoBehaviour
 			else
             {
 				transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-			}
+			}		
 			yield return null;
-
 		}
 	}
 
