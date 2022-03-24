@@ -15,6 +15,9 @@ public class Unit : MonoBehaviour
 	float turnSmoothVelocity;
 
 	public bool isMoving;
+	public bool colliding;
+
+	Collider col;
 
 	void Update()
 	{
@@ -33,7 +36,15 @@ public class Unit : MonoBehaviour
 		}
 	}
 
-	IEnumerator FollowPath()
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+			colliding = true;
+        }
+    }
+
+    IEnumerator FollowPath()
 	{
 		Vector3 currentWaypoint = path[0];
 

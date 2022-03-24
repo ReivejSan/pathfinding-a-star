@@ -66,11 +66,11 @@ public class Pathfinding : MonoBehaviour
 						continue;
 					}
 
-					int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
+					int newCostToNeighbour = node.gCost + GetManhattanDistance(node, neighbour);
 					if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
 					{
 						neighbour.gCost = newCostToNeighbour;
-						neighbour.hCost = GetDistance(neighbour, targetNode);
+						neighbour.hCost = GetManhattanDistance(neighbour, targetNode);
 						neighbour.parent = node;
 
 						if (!openSet.Contains(neighbour))
@@ -114,14 +114,14 @@ public class Pathfinding : MonoBehaviour
 			Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
 			if (directionNew != directionOld)
 			{
-				waypoints.Add(path[i].worldPosition);
+                waypoints.Add(path[i].worldPosition);
 			}
 			directionOld = directionNew;
 		}
 		return waypoints.ToArray();
 	}
 
-	int GetDistance(Node nodeA, Node nodeB)
+	int GetManhattanDistance(Node nodeA, Node nodeB)
 	{
 		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
 		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);

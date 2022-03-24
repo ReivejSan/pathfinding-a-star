@@ -17,6 +17,6 @@ public class ObjectRotator : MonoBehaviour
 
     void Update()
     {
-         ienemyObject.transform.Rotate(_rotation * _rotationSped * Time.deltaTime);
+         enemyObject.transform.Rotate(_rotation * _rotationSped * Time.deltaTime);
     }
 }
