@@ -23,20 +23,22 @@ public class Grid : MonoBehaviour
 
 	void CreateGrid()
 	{
-		grid = new Node[gridSizeX, gridSizeY];
-		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
+		grid = new Node[gridSizeX, gridSizeY]; //declare ukuran array yang akan berisi node
+		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2; //mencari posisi bottom left dari grid pada world position
 
-		for (int x = 0; x < gridSizeX; x++)
+		for (int x = 0; x < gridSizeX; x++) //looping pada array of node
 		{
 			for (int y = 0; y < gridSizeY; y++)
 			{
-				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-				bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
-				grid[x, y] = new Node(walkable, worldPoint, x, y);
+				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius); //mendapatkan koordinat dari bottom left 
+				bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask)); //cek apakah node itu walkable atau tidak
+				grid[x, y] = new Node(walkable, worldPoint, x, y); //membuat node baru pada array
 			}
 		}
 	}
 
+	
+	//fungsi untuk mendapatkan node yang bersebelahan dari node yang diberikan
 	public List<Node> GetNeighbours(Node node)
 	{
 		List<Node> neighbours = new List<Node>();
@@ -58,10 +60,11 @@ public class Grid : MonoBehaviour
 			}
 		}
 
-		return neighbours;
+		return neighbours; //mengembalikan list neighbour
 	}
 
 
+	//mendapatkan node terdekat dari posisi object pada world position
 	public Node NodeFromWorldPoint(Vector3 worldPosition)
 	{
 		float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
@@ -75,7 +78,9 @@ public class Grid : MonoBehaviour
 	}
 
 	public List<Node> path;
-	/*void OnDrawGizmos()
+	
+	//draw hasil gridnya
+	void OnDrawGizmos()
 	{
 		Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
@@ -90,5 +95,5 @@ public class Grid : MonoBehaviour
 				Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
 			}
 		}
-	}*/
+	}
 }
