@@ -17,27 +17,25 @@ public class Unit : MonoBehaviour
 	public bool isMoving;
 	public bool colliding;
 
-	Collider col;
-
 	void Update()
 	{
-		startFindPath();
-	}
-
-	void startFindPath()
-    {
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
 	}
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
 	{
+		float distanceFromTarget = Vector3.Distance(target.position, transform.position);
+
 		if (pathSuccessful)
 		{
-			path = newPath;
-			targetIndex = 0;
-			StopCoroutine("FollowPath");
-			StartCoroutine("FollowPath");
-			isMoving = true;
+			if(distanceFromTarget > 2f)
+            {
+				path = newPath;
+				targetIndex = 0;
+				StopCoroutine("FollowPath");
+				StartCoroutine("FollowPath");
+				isMoving = true;
+			}
 		}
 	}
 

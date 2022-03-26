@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectRotator : MonoBehaviour
 {
-    Unit unit;
+   public Unit unit;
 
     [SerializeField]
     GameObject enemyObject;
@@ -17,6 +17,9 @@ public class ObjectRotator : MonoBehaviour
 
     void Update()
     {
-         enemyObject.transform.Rotate(_rotation * _rotationSped * Time.deltaTime);
+        if(unit.isMoving == true)
+        {
+            enemyObject.transform.Rotate(_rotation * _rotationSped * Time.deltaTime);
+        } 
     }
 }
