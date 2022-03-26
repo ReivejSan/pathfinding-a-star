@@ -8,11 +8,11 @@ public class Unit : MonoBehaviour
 	public Transform target;
 	
 	public float speed = 20;
+	public float turnSpeed = 5;
 	Vector3[] path;
 	int targetIndex;
 
 	public float turnSmoothTime = .1f;
-	float turnSmoothVelocity;
 
 	public bool isMoving;
 	public bool colliding;
@@ -21,6 +21,11 @@ public class Unit : MonoBehaviour
 
 	void Update()
 	{
+		startFindPath();
+	}
+
+	void startFindPath()
+    {
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
 	}
 
@@ -46,14 +51,13 @@ public class Unit : MonoBehaviour
 
     IEnumerator FollowPath()
 	{
+		targetIndex = 0;
 		Vector3 currentWaypoint = path[0];
 
-		Vector3 direction = new Vector3(target.position.x, target.position.y, target.position.z);
-
-		float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-		float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-
-		transform.LookAt(target.position, Vector3.up);
+		Vector3 targetDir = currentWaypoint - this.transform.position;
+		float step = this.turnSpeed * Time.deltaTime;
+		Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+		transform.rotation = Quaternion.LookRotation(newDirection); //ngebuat objek mengarah sesuai path
 
 		while (true)
 		{
@@ -70,7 +74,7 @@ public class Unit : MonoBehaviour
 			}
 			else
             {
-				transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+				transform.position = Vector3.MoveTowards(this.transform.position, currentWaypoint, this.speed * Time.deltaTime);
 			}		
 			yield return null;
 		}

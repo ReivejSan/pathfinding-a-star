@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-	public Transform seeker, target;
-	PathRequestManager requestManager;
+	PathRequestManager requestManager; //create reference for pathrequest manager
 	Grid grid;
 
 	void Awake()
@@ -16,22 +15,22 @@ public class Pathfinding : MonoBehaviour
 		grid = GetComponent<Grid>();
 	}
 
-	public void StartFindPath(Vector3 startPos, Vector3 targetPos)
+	public void StartFindPath(Vector3 startPos, Vector3 targetPos) // untuk memulai courutine findpath
 	{
 		StartCoroutine(FindPath(startPos, targetPos));
 	}
 
 	IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
 	{
-		Vector3[] waypoints = new Vector3[0];
-		bool pathSuccess = false;
+		Vector3[] waypoints = new Vector3[0]; //menampung array waypoint
+		bool pathSuccess = false; //cek path sukses or not
 
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
 
-		if(startNode.walkable && targetNode.walkable)
-        {
+		if (targetNode.walkable) //cek jika target berada di area walkable
+		{
 			List<Node> openSet = new List<Node>();
 			HashSet<Node> closedSet = new HashSet<Node>();
 			openSet.Add(startNode);
@@ -40,7 +39,7 @@ public class Pathfinding : MonoBehaviour
 			{
 				Node node = openSet[0];
 
-				for (int i = 1; i < openSet.Count; i++)
+				for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya
 				{
 					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost)
 					{
@@ -52,11 +51,11 @@ public class Pathfinding : MonoBehaviour
 				openSet.Remove(node);
 				closedSet.Add(node);
 
-				if (node == targetNode)
+				if (node == targetNode) //jika ketemu pathnya
 				{
 					RetracePath(startNode, targetNode);
-					pathSuccess = true;
-					break;
+					pathSuccess = true; //nge return true pada bool pathsuccess
+					break; //keluar dari loop pathfinding
 				}
 
 				foreach (Node neighbour in grid.GetNeighbours(node))
@@ -79,7 +78,7 @@ public class Pathfinding : MonoBehaviour
 				}
 			}
 		}
-		yield return null;
+		yield return null; //wait 1 frame before return to process next line code
 		
 		if (pathSuccess)
 		{
@@ -104,17 +103,18 @@ public class Pathfinding : MonoBehaviour
 
 	}
 
-	Vector3[] SimplifyPath(List<Node> path)
+	Vector3[] SimplifyPath(List<Node> path) //menghilangkan waypoint yg nggak berguna, waypoint hanya muncul di sepanjang path yg ketemu
 	{
 		List<Vector3> waypoints = new List<Vector3>();
 		Vector2 directionOld = Vector2.zero;
+		waypoints.Add(path[0].worldPosition);
 
 		for (int i = 1; i < path.Count; i++)
 		{
 			Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
 			if (directionNew != directionOld)
 			{
-                waypoints.Add(path[i].worldPosition);
+				waypoints.Add(path[i -1].worldPosition);
 			}
 			directionOld = directionNew;
 		}
