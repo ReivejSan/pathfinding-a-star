@@ -9,6 +9,8 @@ public class Pathfinding : MonoBehaviour
 	PathRequestManager requestManager; //create reference for pathrequest manager
 	Grid grid;
 
+	public bool pathSuccess;
+
 	void Awake()
 	{
 		requestManager = GetComponent<PathRequestManager>();
@@ -20,10 +22,13 @@ public class Pathfinding : MonoBehaviour
 		StartCoroutine(FindPath(startPos, targetPos));
 	}
 
-	IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
+	public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
 	{
+		Stopwatch stopwatch = new Stopwatch();
+		stopwatch.Start();
+		
 		Vector3[] waypoints = new Vector3[0]; //menampung array waypoint
-		bool pathSuccess = false; //cek path sukses or not
+		pathSuccess = false; //cek path sukses or not
 
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
@@ -53,6 +58,9 @@ public class Pathfinding : MonoBehaviour
 
 				if (node == targetNode) //jika ketemu pathnya
 				{
+					stopwatch.Stop();
+					print("Path found: " + stopwatch.ElapsedMilliseconds + " ms");
+					
 					RetracePath(startNode, targetNode);
 					pathSuccess = true; //nge return true pada bool pathsuccess
 					break; //keluar dari loop pathfinding
