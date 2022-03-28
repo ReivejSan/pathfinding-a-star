@@ -15,7 +15,6 @@ public class Unit : MonoBehaviour
 	public float turnSmoothTime = .1f;
 
 	public bool isMoving;
-	public bool colliding;
 
 	void Update()
 	{
@@ -28,7 +27,7 @@ public class Unit : MonoBehaviour
 
 		if (pathSuccessful)
 		{
-			if(distanceFromTarget > 2f)
+			if(distanceFromTarget > 1f)
             {
 				path = newPath;
 				targetIndex = 0;
@@ -38,14 +37,6 @@ public class Unit : MonoBehaviour
 			}
 		}
 	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-			colliding = true;
-        }
-    }
 
     IEnumerator FollowPath()
 	{
@@ -98,4 +89,6 @@ public class Unit : MonoBehaviour
 			}
 		}
 	}
+
+    
 }

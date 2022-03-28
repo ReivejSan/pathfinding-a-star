@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 1f;
     public float turnSmoothTime = .1f;
     float turnSmoothVelocity;
+
+    public bool colliding;
 
     void Start()
     {
@@ -51,5 +55,13 @@ public class PlayerMovement : MonoBehaviour
     void LateUpdate()
     {
         rb.AddForce(new Vector3(horizontalInput, 0.0f, verticalInput) * rollingSpeed);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            GameManager.Instance.isDead = true;
+        }
     }
 }
