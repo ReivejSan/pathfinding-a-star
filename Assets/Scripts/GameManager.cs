@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
+
     public static GameManager Instance
     {
         get
@@ -23,13 +24,20 @@ public class GameManager : MonoBehaviour
     public static bool GamePause = false;
 
     public bool isDead;
+    public bool isWin;
+
+    public float restartDelay = 2f;
 
     public GameObject pauseMenuUI;
+    public GameObject winMenuUI;
+    public GameObject restartMenuUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1f;
+        isDead = false;
+        isWin = false;
 
     }
 
@@ -47,6 +55,9 @@ public class GameManager : MonoBehaviour
                 Pause();
             }
         }
+
+        WinGame();
+        LoseGame();
     }
 
     public void Resume()
@@ -63,14 +74,44 @@ public class GameManager : MonoBehaviour
         GamePause = true;
     }
 
+    public void NextScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void LoadMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void QuitGame()
+    void Restart()
     {
-        Application.Quit();
+        Time.timeScale = 1f;
+        Invoke("RestartGame", restartDelay);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void WinGame()
+    {
+        if(isWin == true)
+        {
+            winMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    void LoseGame()
+    {
+        if(isDead == true)
+        {
+            restartMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }

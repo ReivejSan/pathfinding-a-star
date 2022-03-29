@@ -8,7 +8,8 @@ public class CountdownTimer : MonoBehaviour
     public float timeValue = 90;
     public Text timerText;
 
-    bool checkColide;
+    bool checkColide = false;
+
 
     void Update()
     {
@@ -20,11 +21,13 @@ public class CountdownTimer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
+            GameManager.Instance.isWin = true;
             checkColide = true;
         }
     }
+
 
     void DisplayTime(float timeToDisplay)
     {
