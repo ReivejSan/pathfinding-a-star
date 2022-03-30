@@ -6,8 +6,8 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    Transform cameraRotator = null;
+    //[SerializeField]
+    //Transform cameraRotator = null;
 
     private Rigidbody rb;
     private float horizontalInput;

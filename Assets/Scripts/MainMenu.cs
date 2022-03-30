@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    void Start()
+    {
+        AudioManager.instance.Stop("BGM");
+        AudioManager.instance.Play("MainMenu");
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

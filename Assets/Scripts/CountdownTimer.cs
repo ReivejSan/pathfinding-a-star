@@ -17,6 +17,11 @@ public class CountdownTimer : MonoBehaviour
         {
             DisplayTime(timeValue);
         }
+
+        if(timeValue == 0)
+        {
+            GameManager.Instance.isRunnoutTime = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

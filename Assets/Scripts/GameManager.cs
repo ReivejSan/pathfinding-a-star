@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public bool isDead;
     public bool isWin;
+    public bool isRunnoutTime;
 
     public float restartDelay = 2f;
 
@@ -38,7 +39,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         isDead = false;
         isWin = false;
-
+        isRunnoutTime = false;
+        AudioManager.instance.Stop("MainMenu");
+        AudioManager.instance.Play("BGM");
     }
 
     // Update is called once per frame
@@ -108,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     void LoseGame()
     {
-        if(isDead == true)
+        if(isDead == true || isRunnoutTime == true)
         {
             restartMenuUI.SetActive(true);
             Time.timeScale = 0f;
