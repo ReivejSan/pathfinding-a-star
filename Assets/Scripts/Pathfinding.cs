@@ -11,7 +11,7 @@ public class Pathfinding : MonoBehaviour
 
 	public bool pathSuccess;
 
-	void Awake()
+	public void Awake()
 	{
 		requestManager = GetComponent<PathRequestManager>();
 		grid = GetComponent<Grid>();
@@ -24,6 +24,7 @@ public class Pathfinding : MonoBehaviour
 
 	public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
 	{
+
 		Stopwatch stopwatch = new Stopwatch();
 		stopwatch.Start();
 		
@@ -46,7 +47,7 @@ public class Pathfinding : MonoBehaviour
 
 				for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya
 				{
-					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost)
+					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost && openSet[i].hCost < node.hCost)
 					{
 						if (openSet[i].hCost < node.hCost)
 							node = openSet[i];
@@ -59,7 +60,7 @@ public class Pathfinding : MonoBehaviour
 				if (node == targetNode) //jika ketemu pathnya
 				{
 					stopwatch.Stop();
-					print("Path found: " + stopwatch.ElapsedMilliseconds + " ms");
+					print("Path found: " + stopwatch.Elapsed);
 					
 					RetracePath(startNode, targetNode);
 					pathSuccess = true; //nge return true pada bool pathsuccess
@@ -91,6 +92,7 @@ public class Pathfinding : MonoBehaviour
 		if (pathSuccess)
 		{
 			waypoints = RetracePath(startNode, targetNode);
+			stopwatch.Reset();
 		}
 		requestManager.FinishedProcessingPath(waypoints, pathSuccess);
 	}

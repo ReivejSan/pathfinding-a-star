@@ -16,7 +16,12 @@ public class Unit : MonoBehaviour
 
 	public bool isMoving;
 
-	void Update()
+    void Start()
+    {
+		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+	}
+
+    void Update()
 	{
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
 	}
