@@ -1041,30 +1041,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7bec1c0272444904398805756573986e, type: 3}
   m_PrefabInstance: {fileID: 1653380378}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &283046798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2175980583645595013, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
+--- !u!114 &283046799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 283046799, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
   m_PrefabInstance: {fileID: 2175980582868781653}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &283046799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283046798}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4266b622c5bcb94986552bb49da5912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
-  isWin: 0
-  isRunnoutTime: 0
-  restartDelay: 2
-  pauseMenuUI: {fileID: 1005818302}
-  winMenuUI: {fileID: 1420314185}
-  restartMenuUI: {fileID: 45545883}
 --- !u!1 &340013830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79190b1eb4bd7a34db9d16230fdabe74, type: 2}
+  - {fileID: 2100000, guid: df0f80e352def7448b6527ca9584c7ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1845,7 +1832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778298139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5016,13 +5003,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 670675016}
     m_Modifications:
+    - target: {fileID: 283046799, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
+      propertyPath: winMenuUI
+      value: 
+      objectReference: {fileID: 1420314185}
+    - target: {fileID: 283046799, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 1005818302}
+    - target: {fileID: 283046799, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
+      propertyPath: restartMenuUI
+      value: 
+      objectReference: {fileID: 45545883}
     - target: {fileID: 2175980583645595013, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175980583645595014, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
-      propertyPath: nodeRadius
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2175980583645595015, guid: 29bca0fed2206cd4d9493240db36e705, type: 3}
       propertyPath: m_RootOrder
