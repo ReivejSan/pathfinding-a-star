@@ -24,6 +24,7 @@ public class Grid : MonoBehaviour
 	void CreateGrid()
 	{
 		grid = new Node[gridSizeX, gridSizeY]; //declare ukuran array yang akan berisi node
+		
 		Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2; //mencari posisi bottom left dari grid pada world position
 
 		for (int x = 0; x < gridSizeX; x++) //looping pada array of node
@@ -35,6 +36,8 @@ public class Grid : MonoBehaviour
 				grid[x, y] = new Node(walkable, worldPoint, x, y); //membuat node baru pada array
 			}
 		}
+
+		print("Grid length: "+grid.Length);
 	}
 
 	

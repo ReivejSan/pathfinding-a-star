@@ -25,29 +25,29 @@ public class Pathfinding : MonoBehaviour
 	public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
 	{
 
-		Stopwatch stopwatch = new Stopwatch();
-		stopwatch.Start();
-		
-		Vector3[] waypoints = new Vector3[0]; //menampung array waypoint
-		pathSuccess = false; //cek path sukses or not
+		Stopwatch stopwatch = new Stopwatch(); //1
+		stopwatch.Start(); //1
 
-		Node startNode = grid.NodeFromWorldPoint(startPos);
-		Node targetNode = grid.NodeFromWorldPoint(targetPos);
+		Vector3[] waypoints = new Vector3[0]; //menampung array waypoint  //1
+		pathSuccess = false; //cek path sukses or not //1
+
+		Node startNode = grid.NodeFromWorldPoint(startPos); //1
+		Node targetNode = grid.NodeFromWorldPoint(targetPos); //1
 
 
-		if (targetNode.walkable) //cek jika target berada di area walkable
+		if (targetNode.walkable) //cek jika target berada di area walkable //1
 		{
-			List<Node> openSet = new List<Node>();
-			HashSet<Node> closedSet = new HashSet<Node>();
-			openSet.Add(startNode);
+			List<Node> openSet = new List<Node>(); //1
+			HashSet<Node> closedSet = new HashSet<Node>(); //1
+			openSet.Add(startNode);   //1
 
-			while (openSet.Count > 0)
+			while (openSet.Count > 0) ///n
 			{
 				Node node = openSet[0];
 
-				for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya
+				for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya  ///n
 				{
-					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost && openSet[i].hCost < node.hCost)
+					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost && openSet[i].hCost < node.hCost) 
 					{
 						if (openSet[i].hCost < node.hCost)
 							node = openSet[i];
@@ -87,6 +87,7 @@ public class Pathfinding : MonoBehaviour
 				}
 			}
 		}
+
 		yield return null; //wait 1 frame before return to process next line code
 		
 		if (pathSuccess)
