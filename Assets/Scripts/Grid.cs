@@ -37,7 +37,7 @@ public class Grid : MonoBehaviour
 			}
 		}
 
-		print("Grid length: "+grid.Length);
+		//print("Grid length: "+grid.Length);
 	}
 
 	

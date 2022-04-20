@@ -2383,7 +2383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778298139}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5265,61 +5265,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 778298139}
     m_Modifications:
-    - target: {fileID: 946127719151672336, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 946127719151672336, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 946820813405256630, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 946820813405256630, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 947734682464245578, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 947734682464245578, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 947786930903095112, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 947786930903095112, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 969424577115830972, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 969688227826753888, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 970069962412385352, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
       propertyPath: m_Name
       value: PW_espresso_cup
-      objectReference: {fileID: 0}
-    - target: {fileID: 970069962412385352, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 970477066287187820, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 970516383890071904, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 971938578401898302, guid: 9beb08ea8096b6f42afa6d27a8ab0f2c, type: 3}
       propertyPath: m_RootOrder
@@ -5508,6 +5456,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2486387508734219230, guid: 99a4054d58e4cf445a85ed0f4a9749c8, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486387508734219230, guid: 99a4054d58e4cf445a85ed0f4a9749c8, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1595855390}
@@ -5577,21 +5529,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 778298139}
     m_Modifications:
-    - target: {fileID: 5595743429553346772, guid: 403b73467ff3c2c4db2eeadba919a816, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5595743429553346772, guid: 403b73467ff3c2c4db2eeadba919a816, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6244504149181823233, guid: 403b73467ff3c2c4db2eeadba919a816, type: 3}
       propertyPath: m_Name
       value: loafBaguette
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244504149181823233, guid: 403b73467ff3c2c4db2eeadba919a816, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6765321282601821115, guid: 403b73467ff3c2c4db2eeadba919a816, type: 3}
       propertyPath: m_RootOrder
@@ -5690,49 +5630,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7607813712535897793, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7607822957784236481, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7608264741148868649, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 7608543922754696505, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
       propertyPath: m_Name
       value: PW_tea_cup02
-      objectReference: {fileID: 0}
-    - target: {fileID: 7608543922754696505, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7620673050612077011, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7620673050612077011, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7620825749004032321, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7620825749004032321, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621189102489898243, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621189102489898243, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e53821a6cda68d45aea2f3d95fab234, type: 3}
@@ -5743,6 +5643,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7719536496772463321, guid: 095c8919ff1ffba44b2d4181f8736144, type: 3}
+      propertyPath: rollingSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719536496772463321, guid: 095c8919ff1ffba44b2d4181f8736144, type: 3}
+      propertyPath: movementSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7719536496772463332, guid: 095c8919ff1ffba44b2d4181f8736144, type: 3}
       propertyPath: m_Name
       value: PlayerContainer
@@ -5791,6 +5699,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7719536496772463335, guid: 095c8919ff1ffba44b2d4181f8736144, type: 3}
+      propertyPath: m_SkinWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719536496772463335, guid: 095c8919ff1ffba44b2d4181f8736144, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095c8919ff1ffba44b2d4181f8736144, type: 3}
 --- !u!1001 &9197680844274190388
@@ -5800,21 +5716,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 778298139}
     m_Modifications:
-    - target: {fileID: 7522467537082339290, guid: 041b22b81e2485443ae0ad8f38dc2bd4, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522467537082339290, guid: 041b22b81e2485443ae0ad8f38dc2bd4, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8315281185959636495, guid: 041b22b81e2485443ae0ad8f38dc2bd4, type: 3}
       propertyPath: m_Name
       value: bowlSoup
-      objectReference: {fileID: 0}
-    - target: {fileID: 8315281185959636495, guid: 041b22b81e2485443ae0ad8f38dc2bd4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8659859692533363893, guid: 041b22b81e2485443ae0ad8f38dc2bd4, type: 3}
       propertyPath: m_RootOrder

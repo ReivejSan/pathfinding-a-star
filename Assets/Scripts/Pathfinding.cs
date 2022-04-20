@@ -25,8 +25,8 @@ public class Pathfinding : MonoBehaviour
 	public IEnumerator FindPath(Vector3 startPos, Vector3 targetPos)
 	{
 
-		Stopwatch stopwatch = new Stopwatch(); //1
-		stopwatch.Start(); //1
+		//Stopwatch stopwatch = new Stopwatch(); //1
+		//stopwatch.Start(); //1
 
 		Vector3[] waypoints = new Vector3[0]; //menampung array waypoint  //1
 		pathSuccess = false; //cek path sukses or not //1
@@ -35,13 +35,13 @@ public class Pathfinding : MonoBehaviour
 		Node targetNode = grid.NodeFromWorldPoint(targetPos); //1
 
 
-		if (targetNode.walkable) //cek jika target berada di area walkable //1
+		if (startNode.walkable && targetNode.walkable) //cek jika target berada di area walkable //1
 		{
 			List<Node> openSet = new List<Node>(); //1
 			HashSet<Node> closedSet = new HashSet<Node>(); //1
 			openSet.Add(startNode);   //1
 
-			while (openSet.Count > 0) ///n
+			if (openSet.Count > 0) ///n
 			{
 				Node node = openSet[0];
 
@@ -59,12 +59,12 @@ public class Pathfinding : MonoBehaviour
 
 				if (node == targetNode) //jika ketemu pathnya
 				{
-					stopwatch.Stop();
-					print("Path found: " + stopwatch.Elapsed);
+					//stopwatch.Stop();
+					//print("Path found: " + stopwatch.Elapsed);
 					
 					RetracePath(startNode, targetNode);
 					pathSuccess = true; //nge return true pada bool pathsuccess
-					break; //keluar dari loop pathfinding
+					yield break; //keluar dari loop pathfinding
 				}
 
 				foreach (Node neighbour in grid.GetNeighbours(node))
@@ -75,25 +75,32 @@ public class Pathfinding : MonoBehaviour
 					}
 
 					int newCostToNeighbour = node.gCost + GetManhattanDistance(node, neighbour);
-					if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+					if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour)) 
 					{
 						neighbour.gCost = newCostToNeighbour;
 						neighbour.hCost = GetManhattanDistance(neighbour, targetNode);
 						neighbour.parent = node;
 
 						if (!openSet.Contains(neighbour))
+                        {
 							openSet.Add(neighbour);
+						}
+						/*else
+                        {
+							openSet.UpdateItem(neighbour);
+                        }	*/
 					}
 				}
 			}
 		}
 
+
 		yield return null; //wait 1 frame before return to process next line code
 		
-		if (pathSuccess)
+		while (pathSuccess)
 		{
 			waypoints = RetracePath(startNode, targetNode);
-			stopwatch.Reset();
+			//stopwatch.Reset();
 		}
 		requestManager.FinishedProcessingPath(waypoints, pathSuccess);
 	}
@@ -109,6 +116,11 @@ public class Pathfinding : MonoBehaviour
 			currentNode = currentNode.parent;
 		}
 
+		if (currentNode == startNode)
+        {
+			path.Add(currentNode);
+		}
+
 		path.Add (startNode);
 		Vector3[] waypoints = SimplifyPath(path);
 		Array.Reverse(waypoints);
@@ -120,14 +132,14 @@ public class Pathfinding : MonoBehaviour
 	{
 		List<Vector3> waypoints = new List<Vector3>();
 		Vector2 directionOld = Vector2.zero;
-		waypoints.Add(path[0].worldPosition);
+		//waypoints.Add(path[0].worldPosition);
 
 		for (int i = 1; i < path.Count - 1; i++)
 		{
 			Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
 			if (directionNew != directionOld)
 			{
-				waypoints.Add(path[i -1].worldPosition);
+				waypoints.Add(path[i - 1].worldPosition);
 			}
 			directionOld = directionNew;
 		}
