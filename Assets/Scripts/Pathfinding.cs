@@ -45,14 +45,14 @@ public class Pathfinding : MonoBehaviour
 			{
 				Node node = openSet[0];
 
-				for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya
+				/*for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya
 				{
 					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost && openSet[i].hCost < node.hCost)
 					{
 						if (openSet[i].hCost < node.hCost)
 							node = openSet[i];
 					}
-				}
+				}*/
 
 				openSet.Remove(node);
 				closedSet.Add(node);
