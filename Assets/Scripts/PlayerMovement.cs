@@ -37,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
+        if(rb.velocity.magnitude > 0.1)
+        {
+            PathRequestManager.Instance.characterMoving = true;
+        }
+
         /*Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput);
 
         if(direction.magnitude >= .1f)

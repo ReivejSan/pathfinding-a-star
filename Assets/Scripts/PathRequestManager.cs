@@ -14,15 +14,39 @@ public class PathRequestManager : MonoBehaviour
 
 	bool isProcessingPath;
 
+	public bool characterMoving = false;
+
+	private static PathRequestManager _instance;
+
+	public static PathRequestManager Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = FindObjectOfType<PathRequestManager>();
+			}
+			return _instance;
+		}
+	}
+
 	void Awake()
 	{
-		instance = this;
+
+		if (instance == null)
+        {
+			instance = this;
+		}
+		
 		pathfinding = GetComponent<Pathfinding>();
 	}
 
     private void Update()
     {
-		pathfinding.StartFindPath(currentPathRequest.pathStart, currentPathRequest.pathEnd);
+		if(characterMoving == true)
+        {
+			pathfinding.StartFindPath(currentPathRequest.pathStart, currentPathRequest.pathEnd);
+		}
 	}
 
     public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback)

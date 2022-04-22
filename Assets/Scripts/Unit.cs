@@ -16,13 +16,20 @@ public class Unit : MonoBehaviour
 
 	public bool isMoving;
 
-    void Start()
-    {
-		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
-	}
+	
 
-    void Update()
+	/*   void Start()
+	   {
+		   PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+	   }*/
+
+	void Update()
 	{
+		/*if(characterMoving == true)
+        {
+			PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+		}*/
+
 		PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
 	}
 
@@ -36,10 +43,11 @@ public class Unit : MonoBehaviour
             {
 				path = newPath;
 				targetIndex = 0;
-				StopCoroutine("FollowPath");
+				
 				StartCoroutine("FollowPath");
 				isMoving = true;
 			}
+			StopCoroutine("FollowPath");
 		}
 	}
 

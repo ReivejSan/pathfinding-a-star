@@ -69,13 +69,26 @@ public class Pathfinding : MonoBehaviour
 
 				foreach (Node neighbour in grid.GetNeighbours(node))
 				{
+
 					if (!neighbour.walkable || closedSet.Contains(neighbour))
 					{
 						continue;
 					}
 
 					int newCostToNeighbour = node.gCost + GetManhattanDistance(node, neighbour);
-					if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+
+					if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))  //looping A* pathfinding nya
+					{
+						neighbour.gCost = newCostToNeighbour;
+						neighbour.hCost = GetManhattanDistance(neighbour, targetNode);
+						neighbour.parent = node;
+
+						if (!openSet.Contains(neighbour))
+						{
+							openSet.Add(neighbour);
+						}
+					}
+/*					if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
 					{
 						neighbour.gCost = newCostToNeighbour;
 						neighbour.hCost = GetManhattanDistance(neighbour, targetNode);
@@ -83,7 +96,7 @@ public class Pathfinding : MonoBehaviour
 
 						if (!openSet.Contains(neighbour))
 							openSet.Add(neighbour);
-					}
+					}*/
 				}
 			}
 		}

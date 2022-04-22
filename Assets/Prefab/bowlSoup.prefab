@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 8659859692533363893}
   - component: {fileID: 5729101094636993296}
   - component: {fileID: 7522467537082339290}
-  - component: {fileID: 9197680845427049197}
+  - component: {fileID: 9197680844274190390}
   m_Layer: 6
   m_Name: bowlSoup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8659859692533363893
 Transform:
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8315281185959636495}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.7033544, y: 0, z: 16.55}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
@@ -86,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &9197680845427049197
-MeshCollider:
+--- !u!65 &9197680844274190390
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,7 +96,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 671038974649800322, guid: 40295167569d8094cb6705827b3f0a8a, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.3, z: 0.7}
+  m_Center: {x: 0, y: 0.114959545, z: 0}
