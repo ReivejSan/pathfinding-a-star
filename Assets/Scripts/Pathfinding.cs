@@ -45,7 +45,7 @@ public class Pathfinding : MonoBehaviour
 			{
 				Node node = openSet[0];
 
-				/*for (int i = 1; i < openSet.Count; i++)  //looping A* pathfinding nya
+				/*for (int i = 1; i < openSet.Count; i++)  
 				{
 					if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost && openSet[i].hCost < node.hCost)
 					{
@@ -74,6 +74,7 @@ public class Pathfinding : MonoBehaviour
 					{
 						continue;
 					}
+
 
 					int newCostToNeighbour = node.gCost + GetManhattanDistance(node, neighbour);
 
