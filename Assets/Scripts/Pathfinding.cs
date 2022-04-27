@@ -69,12 +69,10 @@ public class Pathfinding : MonoBehaviour
 
 				foreach (Node neighbour in grid.GetNeighbours(node))
 				{
-
 					if (!neighbour.walkable || closedSet.Contains(neighbour))
 					{
 						continue;
 					}
-
 
 					int newCostToNeighbour = node.gCost + GetManhattanDistance(node, neighbour);
 
@@ -111,6 +109,18 @@ public class Pathfinding : MonoBehaviour
 		requestManager.FinishedProcessingPath(waypoints, pathSuccess);
 	}
 
+	int GetManhattanDistance(Node nodeA, Node nodeB)
+	{
+		//rumus manhattan distance
+		//(p1-q1) + (p2-q2)
+		
+		int distanceX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+		int distanceY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+
+		return distanceX + distanceY;
+	}
+
+	//menambahkan waypoint pada tiap path 
 	Vector3[] RetracePath(Node startNode, Node endNode)
 	{
 		List<Node> path = new List<Node>();
@@ -147,11 +157,4 @@ public class Pathfinding : MonoBehaviour
 		return waypoints.ToArray();
 	}
 
-	int GetManhattanDistance(Node nodeA, Node nodeB)
-	{
-		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
-
-		return dstX + dstY;
-	}
 }
