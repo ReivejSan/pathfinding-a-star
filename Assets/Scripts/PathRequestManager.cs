@@ -6,7 +6,7 @@ using UnityEngine;
 public class PathRequestManager : MonoBehaviour
 {
 
-	Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
+	[SerializeField] Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
 	PathRequest currentPathRequest;
 
 	static PathRequestManager instance;
